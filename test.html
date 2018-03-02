@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script src="./index.js"></script> -->
+  <script>
+    // alert(navigator.userAgent)
+    // let options = {
+    //   monitorType: 'apiMonitor',
+    //   params: {
+    //     url: 'http://test-startdt-offical.startdtapi.com/auth/company/simple/info',
+    //     param: '{"city":1303,"storeName":"","storeStatus":"1","currentPage":1,"pageSize":20}',
+    //     response: '{"success":false,"codeNum":0,"codeDesc":"系统异常","value":""}',
+    //     desc: '服务端响应异常',
+    //     app: 1,
+    //     type: 2
+    //   }
+    // }
+//     const BASE_URL = 'http://localhost:3000/mc'
+
+// // post提交数据
+// function sendDataByPost(sendDataStr) {
+//   var xmlhttp = new XMLHttpRequest()
+//   xmlhttp.open('POST', BASE_URL, true)
+//   // xmlhttp.setRequestHeader('Content-type","application/x-www-form-urlencoded")
+//   xmlhttp.send(sendDataStr)
+// }
+
+// // get提交数据
+// function sendDataByGet(sendDataStr) {
+//   const img = new Image();
+//   img.src = `${BASE_URL}?${sendDataStr}`
+// }
+
+// function monitor (type = 'apiMonitor', params = {}) {
+//   const enCodeParams = encodeURIComponent(JSON.stringify({params}))
+//   // 超过3000个字符，改用post上传数据
+//   const sendDataStr = `type=${type}&params=${enCodeParams}`
+//   if (sendDataStr.length > 3000) {
+//     sendDataByPost(sendDataStr)
+//   } else {
+//     sendDataByGet(sendDataStr)
+//   }
+// }
+
+
+// monitor('abc', {a: 'abc&ddd=2'})
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(['exports'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports);
+    global.index = mod.exports;
+  }
+})(this, function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var BASE_URL = 'http://localhost:3000/mc';
+
+  function sendDataByPost(sendDataStr) {
+    var xmlhttp = new window.XMLHttpRequest();
+    xmlhttp.open('POST', BASE_URL, true);
+
+    xmlhttp.send(sendDataStr);
+  }
+
+  function sendDataByGet(sendDataStr) {
+    var img = new window.Image();
+    img.src = BASE_URL + '?' + sendDataStr;
+  }
+
+  function FeMonitorCenter() {
+    var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'apiMonitor';
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var enCodeParams = encodeURIComponent(JSON.stringify({ params: params }));
+
+    var sendDataStr = 'type=' + type + '&params=' + enCodeParams;
+    if (sendDataStr.length > 3000) {
+      sendDataByPost(sendDataStr);
+    } else {
+      sendDataByGet(sendDataStr);
+    }
+  }
+  exports.default = FeMonitorCenter;
+});
+  </script>
+</body>
+</html>

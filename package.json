@@ -1,0 +1,32 @@
+{
+  "name": "fe-monitor-center",
+  "version": "1.0.0",
+  "description": "前端监控中心信息搜集",
+  "main": "lib/index.js",
+  "unpkg": "lib/index.js",
+  "scripts": {
+    "test": "eslint --env browser index.js",
+    "build": "babel index.js --out-file lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sirzxj/fe-monitor-center.git"
+  },
+  "keywords": [
+    "fe",
+    "monitor",
+    "api",
+    "error",
+    "log"
+  ],
+  "author": "sirzxj",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.18.1"
+  }
+}
