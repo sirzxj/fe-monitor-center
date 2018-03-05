@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="http://192.168.2.221:8080/ymj/door/open?doorId=A00181&mobile=18500000000&userName=38hao"></script>
 </head>
 <body>
   <!-- <script src="./index.js"></script> -->
@@ -17,11 +18,11 @@
     //     param: '{"city":1303,"storeName":"","storeStatus":"1","currentPage":1,"pageSize":20}',
     //     response: '{"success":false,"codeNum":0,"codeDesc":"系统异常","value":""}',
     //     desc: '服务端响应异常',
-    //     app: 1,
+    //     app: 1, 
     //     type: 2
     //   }
-    // }
-//     const BASE_URL = 'http://localhost:3000/mc'
+    // } 
+    // const BASE_URL = 'http://localhost:3000/mc'
 
 // // post提交数据
 // function sendDataByPost(sendDataStr) {
@@ -50,54 +51,24 @@
 
 
 // monitor('abc', {a: 'abc&ddd=2'})
-(function (global, factory) {
-  if (typeof define === "function" && define.amd) {
-    define(['exports'], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports);
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(mod.exports);
-    global.index = mod.exports;
-  }
-})(this, function (exports) {
-  'use strict';
+// var iframe = document.createElement("iframe");
+//   var uniqueString = "CHANGE_THIS_TO_SOME_UNIQUE_STRING";
+//   document.body.appendChild(iframe);
+//   // iframe.style.display = "none";
+//   iframe.contentWindow.name = uniqueString;
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+//   // construct a form with hidden inputs, targeting the iframe
+//   var form = document.createElement("form");
+//   form.target = uniqueString;
 
-  var BASE_URL = 'http://localhost:3000/mc';
 
-  function sendDataByPost(sendDataStr) {
-    var xmlhttp = new window.XMLHttpRequest();
-    xmlhttp.open('POST', BASE_URL, true);
+//   form.action = "http://192.168.2.221:8080/ymj/door/open?doorId=A00181&mobile=18500000000&userName=38hao";
+//   form.method = "GET";
+//   document.body.appendChild(form);
+//   form.submit();
 
-    xmlhttp.send(sendDataStr);
-  }
-
-  function sendDataByGet(sendDataStr) {
-    var img = new window.Image();
-    img.src = BASE_URL + '?' + sendDataStr;
-  }
-
-  function FeMonitorCenter() {
-    var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'apiMonitor';
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    var enCodeParams = encodeURIComponent(JSON.stringify({ params: params }));
-
-    var sendDataStr = 'type=' + type + '&params=' + enCodeParams;
-    if (sendDataStr.length > 3000) {
-      sendDataByPost(sendDataStr);
-    } else {
-      sendDataByGet(sendDataStr);
-    }
-  }
-  exports.default = FeMonitorCenter;
-});
+//   console.log(iframe) 
   </script>
+  <iframe src="http://192.168.2.221:8080/ymj/door/open?doorId=A00181&mobile=18500000000&userName=38hao" frameborder="0"></iframe>
 </body>
 </html>

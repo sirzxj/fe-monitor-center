@@ -1,20 +1,19 @@
 /*
- * 前端监控中心
+ * 前端监控中心：搜集各种信息
  */
 const BASE_URL = 'http://localhost:3000/mc'
 
 // post提交数据
-function sendDataByPost(sendDataStr) {
-  var xmlhttp = new window.XMLHttpRequest()
+function sendDataByPost (sendDataStr) {
+  var xmlhttp = new XMLHttpRequest()
   xmlhttp.open('POST', BASE_URL, true)
-  // xmlhttp.setRequestHeader('Content-type","application/x-www-form-urlencoded")
   xmlhttp.send(sendDataStr)
 }
 
 // get提交数据
-function sendDataByGet(sendDataStr) {
-  const img = new window.Image()
-  img.src = `${BASE_URL}?${sendDataStr}`
+function sendDataByGet (sendDataStr) {
+  const img = new Image()
+  img.src = `${BASE_URL}?${sendDataStr}?t=${Date.now()}`
 }
 
 function MonitorCenter (type = 'apiMonitor', params = {}) {
@@ -27,4 +26,5 @@ function MonitorCenter (type = 'apiMonitor', params = {}) {
     sendDataByGet(sendDataStr)
   }
 }
+
 export default MonitorCenter

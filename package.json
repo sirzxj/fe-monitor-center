@@ -6,7 +6,7 @@
   "unpkg": "lib/index.js",
   "scripts": {
     "test": "eslint --env browser index.js",
-    "build": "babel index.js --out-file lib/index.js"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,13 @@
   "author": "sirzxj",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
-    "eslint": "^4.18.1"
+    "eslint": "^4.18.1",
+    "rollup": "^0.56.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0"
   }
 }
