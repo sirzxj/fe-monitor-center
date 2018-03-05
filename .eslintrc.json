@@ -1,4 +1,5 @@
 {
+    "root": true,
     "parserOptions": {
       "ecmaVersion": 8,
       "ecmaFeatures": {
@@ -7,19 +8,15 @@
       },
       "sourceType": "module"
     },
-  
     "env": {
       "es6": true,
       "node": true
     },
-  
-  
     "globals": {
       "document": false,
       "navigator": false,
       "window": false
     },
-  
     "rules": {
       "accessor-pairs": "error",
       "arrow-spacing": ["error", { "before": true, "after": true }],
