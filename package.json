@@ -1,6 +1,6 @@
 {
   "name": "fe-monitor-center",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "前端监控中心信息搜集",
   "main": "lib/index.js",
   "unpkg": "lib/index.js",
