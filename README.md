@@ -19,7 +19,7 @@ or use with cdn
 ```javascript
 import FeMonitorCenter from 'fe-monitor-center'
 
-FeMonitor('apiMonitor', {
+FeMonitorCenter('apiMonitor', {
   url: 'http://test.abc.com/simple/info',
   param: '{"city":1303,"storeName":"","storeStatus":"1","currentPage":1,"pageSize":20}',
   response: '{"success":false,"codeNum":0,"codeDesc":"system problem","value":""}',
