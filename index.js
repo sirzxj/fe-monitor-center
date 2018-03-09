@@ -1,7 +1,7 @@
 /*!
  * Fe monitor center, collect anything if we need
  */
-const BASE_URL = 'https://mc.startdt.com/'
+const BASE_URL = 'https://mc.startdt.com/mc'
 
 // Submit Data with post
 function sendDataByPost (sendDataStr) {
@@ -17,7 +17,7 @@ function sendDataByGet (sendDataStr) {
 }
 
 /**
- * collect api 
+ * collect api
  *
  * @param {String} type monitor type
  * @param {Object} callback collect data info
