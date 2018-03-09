@@ -13,17 +13,18 @@ function sendDataByPost (sendDataStr) {
 // Submit Data with get
 function sendDataByGet (sendDataStr) {
   const img = new Image()
-  img.src = `${BASE_URL}?${sendDataStr}?t=${Date.now()}`
+  console.log(`${BASE_URL}?${sendDataStr}?t=${Date.now()}`)
+  // img.src = `${BASE_URL}?${sendDataStr}?t=${Date.now()}`
 }
 
 /**
  * collect api
- *
+ * 
  * @param {String} type monitor type
  * @param {Object} callback collect data info
  */
 function MonitorCenter (type = 'apiMonitor', params = {}) {
-  const enCodeParams = encodeURIComponent(JSON.stringify({params}))
+  const enCodeParams = encodeURIComponent(JSON.stringify(params))
   // if the character length more than 300, Change the request method into 'POST' 
   const sendDataStr = `type=${type}&params=${enCodeParams}`
   if (sendDataStr.length > 3000) {
