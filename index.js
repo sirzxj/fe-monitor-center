@@ -3,35 +3,39 @@
  */
 const BASE_URL = 'https://mc.startdt.com/mc'
 
-// Submit Data with post
-function sendDataByPost (sendDataStr) {
+// Submit Data with post method
+function sendDataByPost (formData) {
   var xmlhttp = new XMLHttpRequest()
   xmlhttp.open('POST', BASE_URL, true)
-  xmlhttp.send(sendDataStr)
+  xmlhttp.setRequestHeader('Content-Type', 'application/json')
+  xmlhttp.send(JSON.stringify(formData))
 }
 
-// Submit Data with get
+// Submit Data with get method
 function sendDataByGet (sendDataStr) {
   const img = new Image()
-  console.log(`${BASE_URL}?${sendDataStr}?t=${Date.now()}`)
-  // img.src = `${BASE_URL}?${sendDataStr}?t=${Date.now()}`
+  img.src = `${BASE_URL}?${sendDataStr}&t=${Date.now()}`
 }
 
 /**
  * collect api
- * 
  * @param {String} type monitor type
- * @param {Object} callback collect data info
+ * @param {Object} params collect data info
+ * @param {Object} config collect config
  */
-function MonitorCenter (type = 'apiMonitor', params = {}) {
+function FeMonitorCenter (type = 'apiMonitor', params = {}, config = {}) {
+  // collect frequency
+  if (typeof config.frequency === 'number' && Math.random() > config.frequency) {
+    return
+  }
   const enCodeParams = encodeURIComponent(JSON.stringify(params))
-  // if the character length more than 300, Change the request method into 'POST' 
-  const sendDataStr = `type=${type}&params=${enCodeParams}`
+  const enCodeConfig = encodeURIComponent(JSON.stringify(config))
+  const sendDataStr = `type=${type}&params=${enCodeParams}&config=${enCodeConfig}`
+  // if the character length more than 300, Change the request method into 'POST'
   if (sendDataStr.length > 3000) {
-    sendDataByPost(sendDataStr)
+    sendDataByPost({type, params, config})
   } else {
     sendDataByGet(sendDataStr)
   }
 }
-
-export default MonitorCenter
+export default FeMonitorCenter
